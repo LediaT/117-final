@@ -1,0 +1,1323 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Beauty by Xheni - Full Service Salon. Your Beauty, Our Passion. Professional makeup, hair, lash, and nail services in Tirana, Albania. Book your appointment today.">
+    <meta name="keywords" content="Beauty by Xheni, Makeup Artist, Hair Stylist, Lash Extensions, Nail Art, Bridal Makeup, Tirana, Albania, Xheni Rakipi">
+    <meta name="author" content="Xheni Rakipi">
+    
+    <meta property="og:title" content="Beauty by Xheni | Full Service Salon">
+    <meta property="og:description" content="Your Beauty, Our Passion. Professional makeup, hair, lash, and nail services in Tirana.">
+    <meta property="og:type" content="website">
+    
+    <title>Beauty by Xheni | Full Service Salon</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-bg: #fffbf9;
+            --color-surface: #ffffff;
+            --color-primary: #d4a5a5;
+            --color-primary-dark: #c48b8b;
+            --color-primary-light: #f5e6e6;
+            --color-accent: #b76e79;
+            --color-gold: #d4af37;
+            --color-text: #2d2d2d;
+            --color-text-muted: #6b6b6b;
+            --color-border: #f0e6e6;
+            
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: clamp(0.9rem, 0.85rem + 0.25vw, 1rem);
+            line-height: 1.7;
+            color: var(--color-text);
+            background: var(--color-bg);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-accent);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0 0 8px 8px;
+            font-weight: 600;
+            z-index: 1000;
+            transition: top 0.3s ease;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(255, 251, 249, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            letter-spacing: 0.02em;
+        }
+
+        .logo span {
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-cta {
+            background: var(--color-accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 101;
+        }
+
+        .menu-btn span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--color-text);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: 1rem 0;
+            z-index: 99;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav-list {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-nav-list li {
+            padding: 1rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .mobile-nav-list li:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-nav-list a {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav-list a:hover {
+            color: var(--color-accent);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, var(--color-primary-light) 0%, var(--color-bg) 100%);
+        }
+
+        .hero-decoration {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border: 1px solid var(--color-primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .hero-decoration-1 {
+            top: -200px;
+            right: -200px;
+        }
+
+        .hero-decoration-2 {
+            bottom: -300px;
+            left: -200px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 4rem 2rem;
+        }
+
+        .hero-tagline {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease both;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 2rem + 3vw, 5rem);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1s ease 0.2s both;
+        }
+
+        .hero-title span {
+            display: block;
+            font-style: italic;
+            color: var(--color-accent);
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            animation: fadeIn 1s ease 0.4s both;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--color-accent);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            animation: fadeIn 1s ease 0.6s both;
+        }
+
+        .hero-cta:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(183, 110, 121, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .about {
+            padding: 6rem 0;
+            background: var(--color-surface);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+        }
+
+        .about-gallery-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .about-gallery-item:first-child {
+            grid-column: span 2;
+            grid-row: span 2;
+            border-radius: 20px;
+        }
+
+        .about-gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .about-gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            padding: 2rem 0;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .about-text p {
+            color: var(--color-text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-quote {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--color-accent);
+            padding: 1.5rem;
+            border-left: 3px solid var(--color-primary);
+            background: var(--color-primary-light);
+            border-radius: 0 12px 12px 0;
+        }
+
+        .full-service-badge {
+            display: inline-block;
+            background: var(--color-accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .services {
+            padding: 6rem 0;
+            background: var(--color-bg);
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--color-surface);
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--color-border);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: var(--color-primary);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: var(--color-primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-accent);
+        }
+
+        .service-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-list {
+            list-style: none;
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        .service-list li {
+            padding: 0.25rem 0;
+        }
+
+        .service-cta {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .gallery {
+            padding: 6rem 0;
+            background: var(--color-surface);
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-category {
+            margin-bottom: 4rem;
+        }
+
+        .gallery-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .category-title {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--color-accent);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-grid.small {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid.two {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(183, 110, 121, 0.6), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .reviews {
+            padding: 6rem 0;
+            background: var(--color-bg);
+        }
+
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: var(--color-surface);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .review-stars {
+            color: var(--color-gold);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-text {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--color-text);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .review-author {
+            font-weight: 600;
+            color: var(--color-accent);
+        }
+
+        .review-service {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        .contact {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary-dark) 100%);
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 1.5rem + 2.5vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-item a {
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            opacity: 1;
+        }
+
+        .contact-form {
+            background: var(--color-surface);
+            padding: 2.5rem;
+            border-radius: 20px;
+            color: var(--color-text);
+        }
+
+        .form-title {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-text);
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background: var(--color-bg);
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        .form-checkbox input {
+            margin-top: 4px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            padding: 3rem 0;
+            background: var(--color-text);
+            color: white;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-grid.small {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .reviews-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-list {
+                display: none;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid.small {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid.two {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .menu-btn {
+                display: none;
+            }
+
+            .nav-list {
+                display: flex;
+            }
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">Beauty <span>by</span> Xheni</a>
+            <nav aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#reviews" class="nav-link">Reviews</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="#contact" class="nav-cta">Book Now</a>
+            <button class="menu-btn" aria-label="Toggle menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+        <ul class="mobile-nav-list">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <section class="hero">
+            <div class="hero-decoration hero-decoration-1" aria-hidden="true"></div>
+            <div class="hero-decoration hero-decoration-2" aria-hidden="true"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <p class="hero-tagline">Full Service Salon in Tirana</p>
+                    <h1 class="hero-title">
+                        Your Beauty,
+                        <span>Our Passion.</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Experience the art of transformation with professional makeup, stunning hairstyles, luxurious lash extensions, and beautiful nail designs in Tirana, Albania.
+                    </p>
+                    <a href="#contact" class="hero-cta">
+                        Book Your Appointment
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-gallery">
+                        <div class="about-gallery-item">
+                            <img src="/client_site/images/about1.jpg" alt="Xheni Rakipi - Professional Makeup Artist">
+                        </div>
+                        <div class="about-gallery-item">
+                            <img src="/client_site/images/about2.jpg" alt="Beauty by Xheni">
+                        </div>
+                        <div class="about-gallery-item">
+                            <img src="/client_site/images/about3.jpg" alt="Xheni at work">
+                        </div>
+                        <div class="about-gallery-item">
+                            <img src="/client_site/images/about4.jpg" alt="Beauty by Xheni Salon">
+                        </div>
+                        <div class="about-gallery-item">
+                            <img src="/client_site/images/about5.jpg" alt="Xheni styling">
+                        </div>
+                        <div class="about-gallery-item">
+                            <img src="/client_site/images/about6.jpg" alt="Xheni professional">
+                        </div>
+                    </div>
+                    <div class="about-text">
+                        <span class="full-service-badge">Full Service Salon</span>
+                        <p class="section-label">Meet Your Artist</p>
+                        <h2 class="section-title">Xheni Rakipi</h2>
+                        <p>
+                            Welcome to Beauty by Xheni, your full service salon where artistry meets passion. With years of experience in the beauty industry, I specialize in creating stunning looks that enhance your natural beauty and make you feel confident and radiant.
+                        </p>
+                        <p>
+                            From flawless bridal makeup to intricate nail art, glamorous hairstyles to perfect lash extensions, I provide a complete range of beauty services tailored to your unique style and preferences.
+                        </p>
+                        <blockquote class="about-quote">
+                            "Every face is a canvas, and I'm here to help you create your masterpiece."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services" id="services">
+            <div class="container">
+                <div class="services-header">
+                    <p class="section-label">Indulge & Glow</p>
+                    <h2 class="section-title">Services</h2>
+                </div>
+                <div class="services-grid">
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Make-Up</h3>
+                        <ul class="service-list">
+                            <li>Bridal Makeup</li>
+                            <li>Party & Glam</li>
+                            <li>Everyday Natural</li>
+                            <li>Halloween & Costume</li>
+                            <li>Editorial & Photoshoot</li>
+                        </ul>
+                        <a href="#contact" class="service-cta">Contact for Pricing →</a>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Lashes</h3>
+                        <ul class="service-list">
+                            <li>Classic Extensions</li>
+                            <li>Volume Extensions</li>
+                            <li>Hybrid Lashes</li>
+                            <li>Mega Volume</li>
+                            <li>Lash Lift & Tint</li>
+                        </ul>
+                        <a href="#contact" class="service-cta">Contact for Pricing →</a>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Hair</h3>
+                        <ul class="service-list">
+                            <li>Hair Color</li>
+                            <li>Highlights</li>
+                            <li>Balayage</li>
+                            <li>Hair Styling</li>
+                            <li>Braids</li>
+                            <li>Hair Treatments</li>
+                        </ul>
+                        <a href="#contact" class="service-cta">Contact for Pricing →</a>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                                <path d="M2 2l7.586 7.586"></path>
+                                <circle cx="11" cy="11" r="2"></circle>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Nails</h3>
+                        <ul class="service-list">
+                            <li>Gel Manicure</li>
+                            <li>Gel Pedicure</li>
+                            <li>Acrylic Full Set</li>
+                            <li>Nail Art & Design</li>
+                            <li>Special Designs</li>
+                        </ul>
+                        <a href="#contact" class="service-cta">Contact for Pricing →</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery" id="gallery">
+            <div class="container">
+                <div class="gallery-header">
+                    <p class="section-label">Portfolio</p>
+                    <h2 class="section-title">My Work</h2>
+                </div>
+
+                <div class="gallery-category">
+                    <h3 class="category-title">Make-Up</h3>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="/client_site/images/makeup1.jpg" alt="Makeup look 1">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/client_site/images/makeup2.jpg" alt="Makeup look 2">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/client_site/images/makeup3.jpg" alt="Makeup look 3">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/client_site/images/makeup4.jpg" alt="Makeup look 4">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/client_site/images/makeup5.jpg" alt="Makeup look 5">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/client_site/images/makeup6.jpg" alt="Makeup look 6">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/client_site/images/halloween.jpg" alt="Halloween special makeup">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/client_site/images/Bride.jpg" alt="Bridal makeup">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-category">
+                    <h3 class="category-title">Nails</h3>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="/client_site/images/nails1.jpg" alt="Nail design 1">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/client_site/images/nails2.jpg" alt="Nail design 2">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/client_site/images/nails3.jpg" alt="Nail design 3">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/client_site/images/nails4.jpg" alt="Nail design 4">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/client_site/images/nails5.jpg" alt="Nail design 5">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/client_site/images/nails6.jpg" alt="Nail design 6">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/client_site/images/SpecialDesign.jpg" alt="Special nail design">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/client_site/images/Treatment.jpg" alt="Nail treatment">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-category">
+                    <h3 class="category-title">Lashes</h3>
+                    <div class="gallery-grid small">
+                        <div class="gallery-item">
+                            <img src="/client_site/images/lashes1.jpg" alt="Lash extensions 1">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/client_site/images/lashes2.jpg" alt="Lash extensions 2">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/client_site/images/lashes3.jpg" alt="Lash extensions 3">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-category">
+                    <h3 class="category-title">Hair Color</h3>
+                    <div class="gallery-grid small">
+                        <div class="gallery-item">
+                            <img src="/client_site/images/Hair1.jpg" alt="Hair color 1">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/client_site/images/Hair2.jpg" alt="Hair color 2">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/client_site/images/Hair3.jpg" alt="Hair color 3">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-category">
+                    <h3 class="category-title">Hair Styling</h3>
+                    <div class="gallery-grid two">
+                        <div class="gallery-item">
+                            <img src="/client_site/images/Style1.jpg" alt="Hair styling 1">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/client_site/images/Style2.jpg" alt="Hair styling 2">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-category">
+                    <h3 class="category-title">Braids</h3>
+                    <div class="gallery-grid two">
+                        <div class="gallery-item">
+                            <img src="/client_site/images/Braids1.jpg" alt="Braids 1">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/client_site/images/Braids2.jpg" alt="Braids 2">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-category">
+                    <h3 class="category-title">Hair Treatment</h3>
+                    <div class="gallery-grid two">
+                        <div class="gallery-item">
+                            <img src="/client_site/images/HairTreatment1.jpg" alt="Hair treatment 1">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/client_site/images/HairTreatment2.jpg" alt="Hair treatment 2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reviews" id="reviews">
+            <div class="container">
+                <div class="reviews-header">
+                    <p class="section-label">Testimonials</p>
+                    <h2 class="section-title">What Clients Say</h2>
+                </div>
+                <div class="reviews-grid">
+                    <article class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">
+                            "Xheni is absolutely amazing! She did my makeup for my wedding and I felt like a princess. Her attention to detail and ability to enhance natural beauty is unmatched. I couldn't stop looking at myself!"
+                        </p>
+                        <p class="review-author">Sabrina A.</p>
+                        <p class="review-service">Client</p>
+                    </article>
+
+                    <article class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">
+                            "I've been going to Xheni for my lashes for over a year now. She's the best in Tirana! My lashes always look natural yet glamorous, and they last so long. I get compliments everywhere I go!"
+                        </p>
+                        <p class="review-author">Krista T.</p>
+                        <p class="review-service">Client</p>
+                    </article>
+
+                    <article class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">
+                            "The nail art Xheni creates is incredible! She's so creative and can bring any design idea to life. My nails are always the talk of every event. Highly recommend her for any nail service!"
+                        </p>
+                        <p class="review-author">Linda D.</p>
+                        <p class="review-service">Client</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h2>Let's Create Your Perfect Look</h2>
+                        <p>
+                            Ready to transform? Contact me to discuss your beauty needs and book your appointment. I can't wait to help you look and feel amazing!
+                        </p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-item-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                    </svg>
+                                </div>
+                                <a href="https://www.instagram.com/beauty_by_xheni" target="_blank" rel="noopener noreferrer">@beauty_by_xheni</a>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-item-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                    </svg>
+                                </div>
+                                <a href="tel:+355692717665">+355 69 271 7665</a>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-item-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                </div>
+                                <span>Bllok, Tirana, Albania</span>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form" action="#" method="POST">
+                        <h3 class="form-title">Book an Appointment</h3>
+                        <div class="form-group">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service" class="form-label">Service Interested In</label>
+                            <select id="service" name="service" class="form-select" required>
+                                <option value="">Select a service...</option>
+                                <option value="makeup">Make-Up</option>
+                                <option value="lashes">Lash Extensions</option>
+                                <option value="hair-color">Hair Color</option>
+                                <option value="highlights">Highlights</option>
+                                <option value="balayage">Balayage</option>
+                                <option value="hair-styling">Hair Styling</option>
+                                <option value="braids">Braids</option>
+                                <option value="hair-treatment">Hair Treatment</option>
+                                <option value="nails">Nails</option>
+                                <option value="bridal">Bridal Package</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Tell Me About Your Vision</label>
+                            <textarea id="message" name="message" class="form-textarea"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-checkbox">
+                                <input type="checkbox" name="consent" required>
+                                <span>I agree to be contacted regarding my booking request.</span>
+                            </label>
+                        </div>
+                        <button type="submit" class="form-submit">Send Request</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-logo">Beauty by Xheni</p>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/beauty_by_xheni" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="tel:+355692717665">Phone</a>
+            </div>
+            <p class="footer-copy">© Beauty by Xheni. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

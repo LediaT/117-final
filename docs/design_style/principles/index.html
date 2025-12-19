@@ -1,0 +1,695 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Core Principles of Swiss Punk Typography - Break the grid, embrace intuition, push legibility.">
+    <title>Principles | Swiss Punk Typography</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #0a0a0a;
+            --color-surface: #141414;
+            --color-text: #ffffff;
+            --color-text-muted: #888888;
+            --color-red: #ff2d2d;
+            --color-yellow: #ffd600;
+            --color-blue: #0066ff;
+            --font-display: 'Oswald', sans-serif;
+            --font-mono: 'Space Mono', monospace;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--color-text);
+            background: var(--color-bg);
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-red);
+            color: white;
+            padding: 1rem 2rem;
+            z-index: 1000;
+            transition: top 0.3s ease;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--color-red);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        .logo span {
+            color: var(--color-red);
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: var(--color-text-muted);
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--color-red);
+        }
+
+        /* Mobile Menu Button */
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .menu-btn span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--color-text);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* Mobile Menu */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: var(--color-bg);
+            border-bottom: 2px solid var(--color-red);
+            padding: 1rem 0;
+            z-index: 99;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav-list {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-nav-list li {
+            padding: 1rem;
+            border-bottom: 1px solid var(--color-surface);
+        }
+
+        .mobile-nav-list li:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-nav-list a {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+            color: var(--color-text-muted);
+        }
+
+        .mobile-nav-list a:hover,
+        .mobile-nav-list a.active {
+            color: var(--color-red);
+        }
+
+        /* Page Hero */
+        .page-hero {
+            padding: 120px 1.5rem 60px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--color-bg) 0%, #1a1a1a 100%);
+            border-bottom: 2px solid var(--color-surface);
+        }
+
+        .page-hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 10vw, 5rem);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .page-hero-title span {
+            color: var(--color-red);
+        }
+
+        .page-hero-subtitle {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Principles Grid */
+        .principles {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .principle-card {
+            background: var(--color-surface);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .principle-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .principle-number {
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 15vw, 8rem);
+            font-weight: 700;
+            position: absolute;
+            top: -20px;
+            right: -10px;
+            opacity: 0.1;
+            line-height: 1;
+        }
+
+        .principle-card:nth-child(1) .principle-number {
+            color: var(--color-red);
+        }
+
+        .principle-card:nth-child(2) .principle-number {
+            color: var(--color-yellow);
+        }
+
+        .principle-card:nth-child(3) .principle-number {
+            color: var(--color-blue);
+        }
+
+        .principle-card:nth-child(4) .principle-number {
+            color: var(--color-red);
+        }
+
+        .principle-card:nth-child(5) .principle-number {
+            color: var(--color-yellow);
+        }
+
+        .principle-card:nth-child(6) .principle-number {
+            color: var(--color-blue);
+        }
+
+        .principle-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .principle-card:nth-child(1) .principle-title {
+            color: var(--color-red);
+        }
+
+        .principle-card:nth-child(2) .principle-title {
+            color: var(--color-yellow);
+        }
+
+        .principle-card:nth-child(3) .principle-title {
+            color: var(--color-blue);
+        }
+
+        .principle-card:nth-child(4) .principle-title {
+            color: var(--color-red);
+        }
+
+        .principle-card:nth-child(5) .principle-title {
+            color: var(--color-yellow);
+        }
+
+        .principle-card:nth-child(6) .principle-title {
+            color: var(--color-blue);
+        }
+
+        .principle-desc {
+            color: var(--color-text-muted);
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .principle-techniques {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .principle-techniques h4 {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--color-text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .technique-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .technique-tag {
+            background: var(--color-bg);
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background: var(--color-red);
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 4vw, 2rem);
+            font-weight: 700;
+            max-width: 800px;
+            margin: 0 auto 1rem;
+            line-height: 1.4;
+        }
+
+        .quote-author {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Summary Section */
+        .summary {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+
+        .summary h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .summary h2 span {
+            color: var(--color-red);
+        }
+
+        .summary p {
+            color: var(--color-text-muted);
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Navigation Buttons */
+        .page-nav {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem 4rem;
+            flex-wrap: wrap;
+        }
+
+        .page-nav a {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            color: var(--color-text-muted);
+            transition: color 0.3s ease;
+            padding: 0.5rem;
+        }
+
+        .page-nav a:hover {
+            color: var(--color-red);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-bg);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border-top: 2px solid var(--color-surface);
+        }
+
+        .footer p {
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--color-text-muted);
+            transition: color 0.3s ease;
+            padding: 0.5rem;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-red);
+        }
+
+        /* RESPONSIVE */
+        @media (min-width: 768px) {
+            .header-inner {
+                padding: 0 2rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .page-hero {
+                padding: 140px 2rem 80px;
+            }
+
+            .principles {
+                padding: 5rem 2rem;
+            }
+
+            .principles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .principle-card {
+                padding: 2.5rem;
+            }
+
+            .quote-section {
+                padding: 5rem 2rem;
+            }
+
+            .summary {
+                padding: 5rem 2rem;
+            }
+
+            .page-nav {
+                padding: 0 2rem 5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .principles-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 900px) {
+            .menu-btn {
+                display: none;
+            }
+
+            .nav-list {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 899px) {
+            .nav-list {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="header">
+        <div class="header-inner">
+            <a href="../index.html" class="logo">SWISS<span>PUNK</span></a>
+            <nav aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li><a href="../index.html" class="nav-link">HOME</a></li>
+                    <li><a href="../history/index.html" class="nav-link">HISTORY</a></li>
+                    <li><a href="index.html" class="nav-link active">PRINCIPLES</a></li>
+                    <li><a href="../examples/index.html" class="nav-link">EXAMPLES</a></li>
+                    <li><a href="../about/index.html" class="nav-link">ABOUT</a></li>
+                </ul>
+            </nav>
+            <button class="menu-btn" aria-label="Toggle menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+        <ul class="mobile-nav-list">
+            <li><a href="../index.html">HOME</a></li>
+            <li><a href="../history/index.html">HISTORY</a></li>
+            <li><a href="index.html" class="active">PRINCIPLES</a></li>
+            <li><a href="../examples/index.html">EXAMPLES</a></li>
+            <li><a href="../about/index.html">ABOUT</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <section class="page-hero">
+            <h1 class="page-hero-title">THE <span>PRINCIPLES</span></h1>
+            <p class="page-hero-subtitle">Six core ideas that define Swiss Punk typography and the New Wave movement.</p>
+        </section>
+
+        <section class="principles">
+            <div class="principles-grid">
+                <article class="principle-card">
+                    <div class="principle-number">01</div>
+                    <h2 class="principle-title">Break the Grid</h2>
+                    <p class="principle-desc">
+                        The Swiss grid was sacred—until it wasn't. Swiss Punk designers deliberately violated grid systems, creating asymmetric layouts that felt dynamic and unpredictable.
+                    </p>
+                    <div class="principle-techniques">
+                        <h4>TECHNIQUES</h4>
+                        <div class="technique-tags">
+                            <span class="technique-tag">Overlapping elements</span>
+                            <span class="technique-tag">Diagonal alignments</span>
+                            <span class="technique-tag">Irregular spacing</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="principle-card">
+                    <div class="principle-number">02</div>
+                    <h2 class="principle-title">Intuition Over Rules</h2>
+                    <p class="principle-desc">
+                        Weingart believed intuition was just as valid as mathematical precision. Design decisions came from feeling, experimentation, and happy accidents—not formulas.
+                    </p>
+                    <div class="principle-techniques">
+                        <h4>TECHNIQUES</h4>
+                        <div class="technique-tags">
+                            <span class="technique-tag">Experimental layouts</span>
+                            <span class="technique-tag">Trial and error</span>
+                            <span class="technique-tag">Embracing mistakes</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="principle-card">
+                    <div class="principle-number">03</div>
+                    <h2 class="principle-title">Push Legibility</h2>
+                    <p class="principle-desc">
+                        How far can you push type before it becomes unreadable? Swiss Punk explored this boundary, using extreme letter-spacing, overlapping text, and unconventional arrangements.
+                    </p>
+                    <div class="principle-techniques">
+                        <h4>TECHNIQUES</h4>
+                        <div class="technique-tags">
+                            <span class="technique-tag">Tight tracking</span>
+                            <span class="technique-tag">Layered text</span>
+                            <span class="technique-tag">Rotated type</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="principle-card">
+                    <div class="principle-number">04</div>
+                    <h2 class="principle-title">Mix Everything</h2>
+                    <p class="principle-desc">
+                        Forget consistency. Swiss Punk mixed typefaces, weights, sizes, and styles on a single page. The clash created visual energy that modernism had stripped away.
+                    </p>
+                    <div class="principle-techniques">
+                        <h4>TECHNIQUES</h4>
+                        <div class="technique-tags">
+                            <span class="technique-tag">Multiple typefaces</span>
+                            <span class="technique-tag">Weight contrast</span>
+                            <span class="technique-tag">Scale jumps</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="principle-card">
+                    <div class="principle-number">05</div>
+                    <h2 class="principle-title">Embrace Texture</h2>
+                    <p class="principle-desc">
+                        Letterpress artifacts, halftone dots, photocopier distortions—imperfections became features. Texture added depth and humanity to typography.
+                    </p>
+                    <div class="principle-techniques">
+                        <h4>TECHNIQUES</h4>
+                        <div class="technique-tags">
+                            <span class="technique-tag">Halftone patterns</span>
+                            <span class="technique-tag">Ink spread</span>
+                            <span class="technique-tag">Photo collage</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="principle-card">
+                    <div class="principle-number">06</div>
+                    <h2 class="principle-title">Express, Don't Suppress</h2>
+                    <p class="principle-desc">
+                        Modernism demanded neutrality. Swiss Punk demanded personality. Every design choice became a form of expression—bold, rebellious, and unapologetically human.
+                    </p>
+                    <div class="principle-techniques">
+                        <h4>TECHNIQUES</h4>
+                        <div class="technique-tags">
+                            <span class="technique-tag">Bold colors</span>
+                            <span class="technique-tag">Personal style</span>
+                            <span class="technique-tag">Emotional impact</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="quote-section">
+            <p class="quote-text">"Typography has one duty: to convey information in writing. No aesthetic dogma can stand in the way of this goal."</p>
+            <p class="quote-author">— Wolfgang Weingart</p>
+        </section>
+
+        <section class="summary">
+            <h2>Rules Are <span>Starting Points</span></h2>
+            <p>
+                The principles of Swiss Punk aren't about chaos for its own sake. They're about understanding design rules deeply enough to know when and how to break them meaningfully.
+            </p>
+            <p>
+                Every broken grid, every clashing typeface, every pushed boundary serves a purpose: to create designs that communicate with energy, emotion, and intention.
+            </p>
+        </section>
+
+        <nav class="page-nav">
+            <a href="../history/index.html">← Previous: History</a>
+            <a href="../examples/index.html">Next: Examples →</a>
+        </nav>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Ledia Toska. Created for IS 117 - Web Development at NJIT.</p>
+        <div class="footer-links">
+            <a href="../../portfolio/index.html">Portfolio</a>
+            <a href="../../client_site/index.html">Client Site</a>
+            <a href="../../index.html">Back to Hub</a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

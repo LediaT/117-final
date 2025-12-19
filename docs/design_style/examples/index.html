@@ -1,0 +1,805 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Examples of Swiss Punk Typography - See how the New Wave movement influenced design from posters to digital media.">
+    <title>Examples | Swiss Punk Typography</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #0a0a0a;
+            --color-surface: #141414;
+            --color-text: #ffffff;
+            --color-text-muted: #888888;
+            --color-red: #ff2d2d;
+            --color-yellow: #ffd600;
+            --color-blue: #0066ff;
+            --font-display: 'Oswald', sans-serif;
+            --font-mono: 'Space Mono', monospace;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--color-text);
+            background: var(--color-bg);
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-red);
+            color: white;
+            padding: 1rem 2rem;
+            z-index: 1000;
+            transition: top 0.3s ease;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--color-red);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        .logo span {
+            color: var(--color-red);
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: var(--color-text-muted);
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--color-red);
+        }
+
+        /* Mobile Menu Button */
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .menu-btn span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--color-text);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* Mobile Menu */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: var(--color-bg);
+            border-bottom: 2px solid var(--color-red);
+            padding: 1rem 0;
+            z-index: 99;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav-list {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-nav-list li {
+            padding: 1rem;
+            border-bottom: 1px solid var(--color-surface);
+        }
+
+        .mobile-nav-list li:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-nav-list a {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+            color: var(--color-text-muted);
+        }
+
+        .mobile-nav-list a:hover,
+        .mobile-nav-list a.active {
+            color: var(--color-red);
+        }
+
+        /* Page Hero */
+        .page-hero {
+            padding: 120px 1.5rem 60px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--color-bg) 0%, #1a1a1a 100%);
+            border-bottom: 2px solid var(--color-surface);
+        }
+
+        .page-hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 10vw, 5rem);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .page-hero-title span {
+            color: var(--color-red);
+        }
+
+        .page-hero-subtitle {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Category Section */
+        .category {
+            padding: 4rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .category-number {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-bg);
+            background: var(--color-red);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .category:nth-child(2) .category-number {
+            background: var(--color-yellow);
+        }
+
+        .category:nth-child(3) .category-number {
+            background: var(--color-blue);
+        }
+
+        .category:nth-child(4) .category-number {
+            background: var(--color-red);
+        }
+
+        .category-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .category-desc {
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+            max-width: 700px;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            line-height: 1.7;
+        }
+
+        /* Examples Grid */
+        .examples-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .example-card {
+            background: var(--color-surface);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .example-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .example-visual {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Unique visual styles for each example */
+        .example-visual.poster-1 {
+            background: linear-gradient(135deg, var(--color-red) 0%, #ff6b6b 100%);
+        }
+
+        .example-visual.poster-2 {
+            background: linear-gradient(135deg, var(--color-yellow) 0%, #ffeb3b 100%);
+        }
+
+        .example-visual.poster-3 {
+            background: linear-gradient(135deg, var(--color-blue) 0%, #42a5f5 100%);
+        }
+
+        .example-visual.album-1 {
+            background: linear-gradient(45deg, #1a1a1a 25%, transparent 25%, transparent 75%, #1a1a1a 75%),
+                        linear-gradient(45deg, #1a1a1a 25%, var(--color-red) 25%, var(--color-red) 75%, #1a1a1a 75%);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+        }
+
+        .example-visual.album-2 {
+            background: repeating-linear-gradient(
+                90deg,
+                var(--color-yellow),
+                var(--color-yellow) 10px,
+                var(--color-bg) 10px,
+                var(--color-bg) 20px
+            );
+        }
+
+        .example-visual.album-3 {
+            background: 
+                radial-gradient(circle at 30% 30%, var(--color-blue) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, var(--color-red) 0%, transparent 50%),
+                var(--color-bg);
+        }
+
+        .example-visual.web-1 {
+            background: 
+                linear-gradient(135deg, transparent 40%, var(--color-red) 40%, var(--color-red) 60%, transparent 60%),
+                var(--color-surface);
+        }
+
+        .example-visual.web-2 {
+            background: 
+                linear-gradient(45deg, var(--color-yellow) 0%, transparent 50%),
+                linear-gradient(-45deg, var(--color-blue) 0%, transparent 50%),
+                var(--color-bg);
+        }
+
+        .example-visual.web-3 {
+            background: var(--color-bg);
+            border: 10px solid var(--color-red);
+            border-right-color: var(--color-yellow);
+            border-bottom-color: var(--color-blue);
+        }
+
+        .example-visual.fashion-1 {
+            background: 
+                repeating-linear-gradient(
+                    -45deg,
+                    var(--color-bg),
+                    var(--color-bg) 5px,
+                    var(--color-red) 5px,
+                    var(--color-red) 10px
+                );
+        }
+
+        .example-visual.fashion-2 {
+            background: 
+                conic-gradient(from 0deg, var(--color-yellow), var(--color-red), var(--color-blue), var(--color-yellow));
+        }
+
+        .example-visual-text {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            font-weight: 700;
+            color: var(--color-bg);
+            transform: rotate(-5deg);
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .example-visual.album-1 .example-visual-text,
+        .example-visual.album-3 .example-visual-text,
+        .example-visual.web-1 .example-visual-text,
+        .example-visual.web-3 .example-visual-text {
+            color: var(--color-text);
+        }
+
+        .example-info {
+            padding: 1.5rem;
+        }
+
+        .example-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .example-meta {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .example-desc {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+
+        /* Divider */
+        .divider {
+            height: 2px;
+            background: var(--color-surface);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: var(--color-red);
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-text {
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            padding: 1rem 2rem;
+            border: 2px solid white;
+            color: white;
+            transition: all 0.3s ease;
+            min-height: 48px;
+        }
+
+        .btn:hover {
+            background: white;
+            color: var(--color-red);
+        }
+
+        /* Navigation Buttons */
+        .page-nav {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+            flex-wrap: wrap;
+        }
+
+        .page-nav a {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            color: var(--color-text-muted);
+            transition: color 0.3s ease;
+            padding: 0.5rem;
+        }
+
+        .page-nav a:hover {
+            color: var(--color-red);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-bg);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border-top: 2px solid var(--color-surface);
+        }
+
+        .footer p {
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--color-text-muted);
+            transition: color 0.3s ease;
+            padding: 0.5rem;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-red);
+        }
+
+        /* RESPONSIVE */
+        @media (min-width: 600px) {
+            .examples-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .header-inner {
+                padding: 0 2rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .page-hero {
+                padding: 140px 2rem 80px;
+            }
+
+            .category {
+                padding: 5rem 2rem;
+            }
+
+            .example-visual {
+                height: 220px;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .menu-btn {
+                display: none;
+            }
+
+            .nav-list {
+                display: flex;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .examples-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 899px) {
+            .nav-list {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="header">
+        <div class="header-inner">
+            <a href="../index.html" class="logo">SWISS<span>PUNK</span></a>
+            <nav aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li><a href="../index.html" class="nav-link">HOME</a></li>
+                    <li><a href="../history/index.html" class="nav-link">HISTORY</a></li>
+                    <li><a href="../principles/index.html" class="nav-link">PRINCIPLES</a></li>
+                    <li><a href="index.html" class="nav-link active">EXAMPLES</a></li>
+                    <li><a href="../about/index.html" class="nav-link">ABOUT</a></li>
+                </ul>
+            </nav>
+            <button class="menu-btn" aria-label="Toggle menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+        <ul class="mobile-nav-list">
+            <li><a href="../index.html">HOME</a></li>
+            <li><a href="../history/index.html">HISTORY</a></li>
+            <li><a href="../principles/index.html">PRINCIPLES</a></li>
+            <li><a href="index.html" class="active">EXAMPLES</a></li>
+            <li><a href="../about/index.html">ABOUT</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <section class="page-hero">
+            <h1 class="page-hero-title">THE <span>EXAMPLES</span></h1>
+            <p class="page-hero-subtitle">See Swiss Punk influence across decades and disciplines—from 1970s posters to modern digital design.</p>
+        </section>
+
+        <section class="category">
+            <div class="category-header">
+                <div class="category-number">01</div>
+                <h2 class="category-title">POSTERS & PRINT</h2>
+            </div>
+            <p class="category-desc">
+                The poster was the original canvas for Swiss Punk experimentation. Weingart and his students created iconic works that challenged every rule of traditional typography.
+            </p>
+            <div class="examples-grid">
+                <article class="example-card">
+                    <div class="example-visual poster-1">
+                        <span class="example-visual-text">TYPO</span>
+                    </div>
+                    <div class="example-info">
+                        <h3 class="example-title">Typographic Process</h3>
+                        <p class="example-meta">Wolfgang Weingart, 1974</p>
+                        <p class="example-desc">Layered letterforms and halftone dots create depth and movement in this iconic poster.</p>
+                    </div>
+                </article>
+                <article class="example-card">
+                    <div class="example-visual poster-2">
+                        <span class="example-visual-text">BASEL</span>
+                    </div>
+                    <div class="example-info">
+                        <h3 class="example-title">Basel School Exhibition</h3>
+                        <p class="example-meta">Basel School of Design, 1978</p>
+                        <p class="example-desc">Bold diagonal compositions and clashing colors announce student exhibitions.</p>
+                    </div>
+                </article>
+                <article class="example-card">
+                    <div class="example-visual poster-3">
+                        <span class="example-visual-text">NEW</span>
+                    </div>
+                    <div class="example-info">
+                        <h3 class="example-title">New Wave Typography</h3>
+                        <p class="example-meta">April Greiman, 1982</p>
+                        <p class="example-desc">American interpretation brings California color and early digital elements.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="category">
+            <div class="category-header">
+                <div class="category-number">02</div>
+                <h2 class="category-title">ALBUM COVERS</h2>
+            </div>
+            <p class="category-desc">
+                The music industry embraced Swiss Punk's rebellious energy. Post-punk, new wave, and electronic artists found the perfect visual language for their sound.
+            </p>
+            <div class="examples-grid">
+                <article class="example-card">
+                    <div class="example-visual album-1">
+                        <span class="example-visual-text">PUNK</span>
+                    </div>
+                    <div class="example-info">
+                        <h3 class="example-title">Post-Punk Records</h3>
+                        <p class="example-meta">Factory Records, 1979-1985</p>
+                        <p class="example-desc">Peter Saville's designs for Joy Division and New Order merged Swiss Punk with minimalism.</p>
+                    </div>
+                </article>
+                <article class="example-card">
+                    <div class="example-visual album-2">
+                        <span class="example-visual-text">WAVE</span>
+                    </div>
+                    <div class="example-info">
+                        <h3 class="example-title">New Wave Singles</h3>
+                        <p class="example-meta">Various Artists, 1980s</p>
+                        <p class="example-desc">Striped patterns and bold geometry defined the visual identity of synthesizer music.</p>
+                    </div>
+                </article>
+                <article class="example-card">
+                    <div class="example-visual album-3">
+                        <span class="example-visual-text">ELECTRO</span>
+                    </div>
+                    <div class="example-info">
+                        <h3 class="example-title">Electronic Music</h3>
+                        <p class="example-meta">Various Labels, 1990s-Present</p>
+                        <p class="example-desc">The aesthetic continues in techno and electronic music artwork worldwide.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="category">
+            <div class="category-header">
+                <div class="category-number">03</div>
+                <h2 class="category-title">WEB & DIGITAL</h2>
+            </div>
+            <p class="category-desc">
+                Swiss Punk principles translate surprisingly well to digital design. Broken grids, bold typography, and expressive layouts define cutting-edge web experiences.
+            </p>
+            <div class="examples-grid">
+                <article class="example-card">
+                    <div class="example-visual web-1">
+                        <span class="example-visual-text">WEB</span>
+                    </div>
+                    <div class="example-info">
+                        <h3 class="example-title">Brutalist Websites</h3>
+                        <p class="example-meta">2010s Web Design Trend</p>
+                        <p class="example-desc">Raw HTML aesthetics and intentionally "ugly" design echo Swiss Punk's anti-polish stance.</p>
+                    </div>
+                </article>
+                <article class="example-card">
+                    <div class="example-visual web-2">
+                        <span class="example-visual-text">APP</span>
+                    </div>
+                    <div class="example-info">
+                        <h3 class="example-title">Creative Agency Sites</h3>
+                        <p class="example-meta">Modern Portfolio Design</p>
+                        <p class="example-desc">Design studios use Swiss Punk elements to showcase creativity and break from corporate templates.</p>
+                    </div>
+                </article>
+                <article class="example-card">
+                    <div class="example-visual web-3">
+                        <span class="example-visual-text">UI</span>
+                    </div>
+                    <div class="example-info">
+                        <h3 class="example-title">Experimental UI</h3>
+                        <p class="example-meta">Contemporary App Design</p>
+                        <p class="example-desc">Bold borders, asymmetric layouts, and unexpected interactions bring Swiss Punk to mobile.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="category">
+            <div class="category-header">
+                <div class="category-number">04</div>
+                <h2 class="category-title">FASHION & BRANDING</h2>
+            </div>
+            <p class="category-desc">
+                From streetwear to high fashion, Swiss Punk's graphic intensity continues to influence visual identity and brand expression.
+            </p>
+            <div class="examples-grid">
+                <article class="example-card">
+                    <div class="example-visual fashion-1">
+                        <span class="example-visual-text">STYLE</span>
+                    </div>
+                    <div class="example-info">
+                        <h3 class="example-title">Streetwear Graphics</h3>
+                        <p class="example-meta">Contemporary Fashion</p>
+                        <p class="example-desc">Diagonal stripes, bold type, and graphic patterns define modern street fashion branding.</p>
+                    </div>
+                </article>
+                <article class="example-card">
+                    <div class="example-visual fashion-2">
+                        <span class="example-visual-text">BRAND</span>
+                    </div>
+                    <div class="example-info">
+                        <h3 class="example-title">Identity Systems</h3>
+                        <p class="example-meta">Brand Design</p>
+                        <p class="example-desc">Companies seeking to appear innovative adopt Swiss Punk elements in their visual identities.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="cta">
+            <h2 class="cta-title">START BREAKING RULES</h2>
+            <p class="cta-text">Now that you've seen Swiss Punk in action, it's time to apply these principles to your own work. Remember: understand the rules before you break them.</p>
+            <a href="../principles/index.html" class="btn">Review the Principles</a>
+        </section>
+
+        <nav class="page-nav">
+            <a href="../principles/index.html">← Previous: Principles</a>
+            <a href="../about/index.html">Next: About →</a>
+        </nav>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 Ledia Toska. Created for IS 117 - Web Development at NJIT.</p>
+        <div class="footer-links">
+            <a href="../../portfolio/index.html">Portfolio</a>
+            <a href="../../client_site/index.html">Client Site</a>
+            <a href="../../index.html">Back to Hub</a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
